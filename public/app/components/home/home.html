@@ -1,0 +1,90 @@
+<div ui-view='header'></div>
+<div ng-controller="homeCtrl" class="container-full">
+    <div class="select-program">
+        <div layout="row">
+            <fieldset class="demo-fieldset" >
+                <legend class="demo-legend">Select Program </legend>
+                <spna class="program-left">Program:</spna>
+                    <md-input-container style="margin-right: 10px;">
+                        <label>Select Program</label>
+                        <md-select ng-model="program">
+                            <md-option ng-repeat="program in programData" value="{{program}}">{{program}}</md-option>
+                        </md-select>
+                    </md-input-container>
+            </fieldset>
+        </div>
+    </div>
+    <div layout="row" layout-wrap class="select-geo">
+        <div flex="100" layout="column">
+            <div>
+                <fieldset class="demo-fieldset" >
+                    <legend class="demo-legend">Select GEO </legend>
+                    <div layout="row" layout-wrap flex>
+                        <div class="demo-select-all-checkboxes" flex="100" ng-repeat="geo in geos">
+                            <md-checkbox ng-checked="exists(geo, selectedGEO)" ng-click="toggle(geo, selectedGEO)">
+                                {{ geo.geo }}
+                            </md-checkbox>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div layout="row" layout-wrap class="select-measures">
+        <div flex="100" layout="column">
+            <fieldset class="demo-fieldset" >
+                <legend class="demo-legend">Select Measures </legend>
+                <md-table-container>
+                    <table md-table md-row-select multiple ng-model="selectedMeasure" md-progress="measures">
+                        <thead md-head>
+                        <tr md-row>
+                            <th md-column><span>Measure</span></th>
+                            <th md-column><span>Dependent</span></th>
+                        </tr>
+                        </thead>
+                        <tbody md-body>
+                        <tr md-row md-select="measure" md-select-id="measure" md-auto-select ng-repeat="measure in measures">
+                            <td md-cell>{{measure.measure}}</td>
+                            <td md-cell>{{measure.dependent}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+            </fieldset>
+        </div>
+    </div>
+    <div class="add-cancel-btn-center">
+        <md-button class="md-raised md-primary" ng-click="onAdd()">Add</md-button>
+        <md-button class="md-raised md-primary">Cancel</md-button>
+    </div>
+    <div ng-if="showTable">
+        <md-table-container>
+            <table md-table ng-model="selected">
+                <thead md-head>
+                <tr md-row>
+                    <th></th>
+                    <th></th>
+                    <th md-column><span>Program</span></th>
+                    <th md-column><span>GEO</span></th>
+                    <th md-column>Measure</th>
+                    <th md-column>Status</th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row ng-repeat="data in finalData">
+                    <td md-cell><md-button class="md-raised md-primary" ng-click="onAddNewRow(data.id)">+</md-button></td>
+                    <td md-cell><md-button class="md-raised md-primary" ng-click="onDelete($event,data.id)">-</md-button></td>
+                    <td md-cell>{{data.program}}</td>
+                    <td md-cell>{{data.geo.geo}}</td>
+                    <td md-cell>{{data.measure}}</td>
+                    <td md-cell>Enquired</td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        <div class="add-cancel-btn-center">
+            <md-button class="md-raised md-primary" ng-click="onAddNewRow()">Ok</md-button>
+            <md-button class="md-raised md-primary">Cancel</md-button>
+        </div>
+    </div>
+</div>

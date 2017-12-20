@@ -1,0 +1,36 @@
+.add-cancel-btn-center {
+    text-align: center;
+    padding-top: 15px;
+}
+.select-program {
+    width: 26%;
+    display: inline-block;
+}
+.container-full {padding: 15px 20px !important;}
+.select-program fieldset.demo-fieldset {
+    width: 100%;
+}
+
+spna.program-left {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 15px;
+}
+.demo-fieldset md-input-container {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+}
+.layout-wrap.layout-row.select-geo {
+    width: 23.25%;
+    display: inline-block;
+    margin: 0 5%;
+}
+.layout-wrap.layout-row.select-measures {
+    width: 40%;
+    display: inline-block;
+    text-align: right;
+}
+table.md-table {
+    border: solid 1px #e0e0e0 !important;
+}

@@ -10,7 +10,6 @@
 .select-program fieldset.demo-fieldset {
     width: 100%;
 }
-
 spna.program-left {
     display: table-cell;
     vertical-align: middle;
@@ -33,4 +32,20 @@ spna.program-left {
 }
 table.md-table {
     border: solid 1px #e0e0e0 !important;
+}
+.select-measures fieldset.demo-fieldset{
+    overflow-y: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+.container-full md-table-container .ng-isolate-scope.ng-empty {
+    max-height: 290px !important;
+    width: 99.3% !important;
+    display: flow-root;
+    overflow-y: auto;
+    overflow-x: hidden !important;
+}
+.container-full md-table-container .ng-isolate-scope.ng-empty thead, .container-full md-table-container .ng-isolate-scope.ng-empty tbody {
+    width: 100% !important;
+    display: table !important;
 }

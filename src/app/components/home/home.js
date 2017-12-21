@@ -13,13 +13,25 @@ angular.module('programApp.home', [])
       {'id':4, 'geo':"JPN"}];
     $scope.measures = [
       {
+        id:'m1',
         measure:'Measure A',
         dependent:'depMeasure A'
       },
       {
+        id:'m2',
         measure:'Measure B',
         dependent:'depMeasure B'
-      }
+      },
+      {
+        id:'m3',
+        measure:'Measure C',
+        dependent:'depMeasure C'
+      },
+      {
+        id:'m4',
+        measure:'Measure D',
+        dependent:'depMeasure '
+      },
     ];
 
     $scope.toggle = function (item, list) {
@@ -37,15 +49,15 @@ angular.module('programApp.home', [])
     };
 
     $scope.onAdd = function(){
-      $scope.showTable = true;
       for(var j= 0; j< $scope.selectedMeasure.length;j++) {
         for(var i=0; i < $scope.selectedGEO.length;i++){
-          $scope.finalData.push({'id': Math.random(), 'program':$scope.program,'geo':$scope.selectedGEO[i],'measure':$scope.selectedMeasure[j].measure});
+          $scope.finalData.push({'id': Math.random(), 'program':$scope.program,'geo':$scope.selectedGEO[i],'measure':$scope.selectedMeasure[j]});
         }
        }
-      $scope.program = '';
-      $scope.selectedMeasure = '';
-      $scope.selectedGEO = '';
+      $scope.program = null;
+      $scope.selectedMeasure = [];
+      $scope.selectedGEO = [];
+      $scope.showTable = ($scope.finalData.length > 0) ? true : false;
     };
 
     $scope.onDelete = function(ev,ID){
@@ -69,7 +81,14 @@ angular.module('programApp.home', [])
         return obj.id == ID;
       });
       $scope.program = result[0].program;
-      $scope.selectedMeasure = result[0].measure;
-      $scope.selectedGEO = result[0].geo.geo;
+      $scope.selectedMeasure = [result[0].measure];
+      $scope.selectedGEO = [result[0].geo];
+    };
+
+    $scope.addNewRow = function(){
+        $scope.finalData.push({'id': Math.random(), 'program':$scope.program,'geo':$scope.selectedGEO[0],'measure':$scope.selectedMeasure[0].measure})
+        $scope.program = null;
+        $scope.selectedMeasure = [];
+        $scope.selectedGEO = [];
     };
   }]);

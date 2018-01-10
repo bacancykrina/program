@@ -17,7 +17,7 @@ spna.program-left {
 }
 .demo-fieldset md-input-container {
     display: table-cell;
-    width: 100%;
+    width: 64% !important;
     vertical-align: middle;
 }
 .layout-wrap.layout-row.select-geo {
@@ -26,7 +26,7 @@ spna.program-left {
     margin: 0 5%;
 }
 .layout-wrap.layout-row.select-measures {
-    width: 40%;
+    width: 73%;
     display: inline-block;
     text-align: right;
 }
@@ -34,9 +34,7 @@ table.md-table {
     border: solid 1px #e0e0e0 !important;
 }
 .select-measures fieldset.demo-fieldset{
-    overflow-y: auto;
-    max-height: 200px;
-    overflow-x: hidden;
+  
 }
 .container-full md-table-container .ng-isolate-scope.ng-empty {
     max-height: 290px !important;
@@ -49,3 +47,20 @@ table.md-table {
     width: 100% !important;
     display: table !important;
 }
+.container-full md-table-container .ng-isolate-scope.ng-empty thead tr th, .container-full md-table-container .ng-isolate-scope.ng-empty tbody tr td {width: 15%;}
+.container-full md-table-container .ng-isolate-scope.ng-empty thead tr th:nth-child(1),
+.container-full md-table-container .ng-isolate-scope.ng-empty thead tr th:nth-child(2),
+.container-full md-table-container .ng-isolate-scope.ng-empty tbody tr td:nth-child(1),
+.container-full md-table-container .ng-isolate-scope.ng-empty tbody tr td:nth-child(2) {
+    width: 20%;
+}
+.main-measure{
+    overflow-y: auto;
+    max-height: 200px;
+    overflow-x: hidden; 
+}
+.demo-legend {position: absolute;
+    right: 15px;
+    top: -8px;
+    background: #fff;}
+    .layout-column.flex-100 { position: relative; top: -10px; }

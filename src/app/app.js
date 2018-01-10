@@ -6,7 +6,7 @@ require('angular-material');
 require('angular-material-data-table');
 require('./components/home/home.js');
 
-var app = angular.module('programApp', ['ui.router','ngMaterial','programApp.home','md.data.table']);
+var app = angular.module('programApp', ['ui.router','ngMaterial','programApp.home','md.data.table','ngAria']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
@@ -23,5 +23,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
           templateUrl:"app/common/header/header.html"
         }
       }
-    })
+    });
 });

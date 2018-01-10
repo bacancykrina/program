@@ -14,42 +14,26 @@
             </fieldset>
         </div>
     </div>
-    <div layout="row" layout-wrap class="select-geo">
-        <div flex="100" layout="column">
-            <div>
-                <fieldset class="demo-fieldset" >
-                    <legend class="demo-legend">Select GEO </legend>
-                    <div layout="row" layout-wrap flex>
-                        <div class="demo-select-all-checkboxes" flex="100" ng-repeat="geo in geos">
-                            <md-checkbox ng-checked="exists(geo, selectedGEO)" ng-click="toggle(geo, selectedGEO)">
-                                {{ geo.geo }}
-                            </md-checkbox>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-    </div>
     <div layout="row" layout-wrap class="select-measures">
         <div flex="100" layout="column">
             <fieldset class="demo-fieldset" >
+            <div class="main-measure">
                 <legend class="demo-legend">Select Measures </legend>
-                <md-table-container>
-                    <table md-table md-row-select multiple ng-model="selectedMeasure" md-progress="measures">
-                        <thead md-head>
-                        <tr md-row>
-                            <th md-column><span>Measure</span></th>
-                            <th md-column><span>Dependent</span></th>
-                        </tr>
-                        </thead>
-                        <tbody md-body>
-                        <tr md-row md-select="measure" md-select-id="measure" md-auto-select ng-repeat="measure in measures">
-                            <td md-cell>{{measure.measure}}</td>
-                            <td md-cell>{{measure.dependent}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
+                <table ng-repeat="measure in measures">
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox" ng-click="selectAllMeasures(measure)" ng-checked="checkAllGeoSelected(measure)"></td>
+                        <td>{{measure.measure}}</td>
+                        <td>{{measure.dependent}}</td>
+                    </tr>
+                    <tr ng-repeat="geo in geos">
+                        <td></td>
+                        <td><input type="checkbox" ng-checked="checkSelectedMeasure(measure, geo.geo)" ng-click="selectGeo(measure, geo.geo)"></td>
+                        <td>{{geo.geo}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
             </fieldset>
         </div>
     </div>
@@ -72,18 +56,18 @@
                 </thead>
                 <tbody md-body>
                 <tr md-row ng-repeat="data in finalData">
-                    <td md-cell><md-button class="md-raised md-primary" ng-click="onAddNewRow(data.id)">+</md-button></td>
-                    <td md-cell><md-button class="md-raised md-primary" ng-click="onDelete($event,data.id)">-</md-button></td>
+                    <td md-cell><md-button class="md-raised md-primary" ng-click="onAddNewRow(data)">+</md-button></td>
+                    <td md-cell><md-button class="md-raised md-primary" ng-click="onDelete($event,data)">-</md-button></td>
                     <td md-cell>{{data.program}}</td>
-                    <td md-cell>{{data.geo.geo}}</td>
-                    <td md-cell>{{data.measure}}</td>
+                    <td md-cell>{{data.measure}}-{{data.geo}}</td>
+                    <td md-cell>{{data.dependent}}</td>
                     <td md-cell>Enquired</td>
                 </tr>
                 </tbody>
             </table>
         </md-table-container>
         <div class="add-cancel-btn-center">
-            <md-button class="md-raised md-primary" ng-click="onAddNewRow()">Ok</md-button>
+            <md-button class="md-raised md-primary" ng-click="addNewRow()">Ok</md-button>
             <md-button class="md-raised md-primary">Cancel</md-button>
         </div>
     </div>
